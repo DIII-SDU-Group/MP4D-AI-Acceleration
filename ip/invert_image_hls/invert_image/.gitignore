@@ -6,5 +6,4 @@ syn
 .autopilot
 .debug
 .tcls
-*.aps
 script.tcl
