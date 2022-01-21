@@ -1,0 +1,6 @@
+*.zip
+.project
+.cproject
+.settings
+.vitis_hls_log_all.xml
+.apc

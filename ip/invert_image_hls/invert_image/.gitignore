@@ -1,0 +1,10 @@
+impl
+syn
+*.json
+*.funcunit
+*.log
+.autopilot
+.debug
+.tcls
+*.aps
+script.tcl
