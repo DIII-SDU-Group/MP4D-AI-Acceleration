@@ -1,0 +1,3 @@
+[submodule "ip/InvertImageIP"]
+	path = ip/InvertImageIP
+	url = https://github.com/frnyb/InvertImageIP.git
