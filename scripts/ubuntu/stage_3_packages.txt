@@ -29,3 +29,5 @@ lsb-release
 default-jdk
 unzip
 zip
+
+ros-foxy-usb-cam
