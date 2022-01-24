@@ -30,10 +30,10 @@ xargs -r -a /mp4d_settings/stage_3_packages.txt apt -y install
 ## Load wilc module on boot
 echo "wilc-sdio" > /etc/modules-load.d/wilc-sdio.conf
 
-# dialout
+# User add
 adduser $UBUNTU_USER dialout
+adduser $UBUNTU_USER video
+usermod -a -G video $UBUNTU_USER
 
 # sudo
 chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
-
-
