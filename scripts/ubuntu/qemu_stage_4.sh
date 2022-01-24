@@ -46,6 +46,7 @@ cd /home/$UBUNTU_USER/Fast-RTPS-Gen/ && /opt/gradle/gradle-6.3/bin/gradle instal
 cd /home/$UBUNTU_USER/ros2_ws/src/
 su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone https://github.com/PX4/px4_ros_com.git"
 su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone https://github.com/PX4/px4_msgs.git"
+su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone --recurse-submodules https://github.com/frnyb/InvertImage.git" # Custom package
 
 # Sudo workaround
 chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
