@@ -30,7 +30,5 @@ default-jdk
 unzip
 zip
 
-ros-foxy-usb-cam
-
 libopencv-dev
 python3-opencv

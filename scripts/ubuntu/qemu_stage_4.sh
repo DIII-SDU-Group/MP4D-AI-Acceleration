@@ -23,11 +23,6 @@ sudo apt install -y ros-foxy-ros-base
 
 echo "source /opt/ros/foxy/setup.bash" >> /home/$UBUNTU_USER/.bashrc
 
-su - $UBUNTU_USER -c "mkdir -p ~/ros2_ws/src"
-
-# Prepare for ROS2 cross-compilation
-su - $UBUNTU_USER -c "cd ~/ros2_ws/ && git clone https://github.com/ros-tooling/cross_compile.git -b 0.0.1 src/ros2/cross_compile"
-
 # Create ros2_ws folder in specified user's home dir
 su - $UBUNTU_USER -c "mkdir -p ~/ros2_ws/src"
 
@@ -43,10 +38,12 @@ su - $UBUNTU_USER -c "cd ~/Fast-RTPS-Gen && /opt/gradle/gradle-6.3/bin/gradle as
 cd /home/$UBUNTU_USER/Fast-RTPS-Gen/ && /opt/gradle/gradle-6.3/bin/gradle install && cd /
 
 # Get PX4 ROS packages
-cd /home/$UBUNTU_USER/ros2_ws/src/
 su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone https://github.com/PX4/px4_ros_com.git"
 su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone https://github.com/PX4/px4_msgs.git"
-su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone --recurse-submodules https://github.com/frnyb/InvertImage.git" # Custom package
+su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone --recurse-submodules https://github.com/frnyb/InvertImage.git" 
+
+# Custom package
+apt install -y ros-foxy-usb-cam
 
 # Sudo workaround
 chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
@@ -59,3 +56,8 @@ apt upgrade -y
 chown -R root:root / 2> /dev/null
 chown -R $UBUNTU_USER:$UBUNTU_USER /home/$UBUNTU_USER
 
+# Add UIO functionality
+groupadd uio
+adduser $UBUNTU_USER uio
+usermod -a -G uio $UBUNTU_USER
+echo SUBSYSTEMS==\"uio\", GROUP=\"uio\", MODE=\"0660\" > /etc/udev/rules.d/70-uio.rules
