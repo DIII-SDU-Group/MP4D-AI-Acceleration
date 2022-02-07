@@ -1,0 +1,3 @@
+[submodule "ip/finn-example-ip"]
+	path = ip/finn-example-ip
+	url = https://github.com/DIII-SDU-Group/finn-example-ip.git
