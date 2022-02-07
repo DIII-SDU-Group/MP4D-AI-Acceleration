@@ -108,6 +108,8 @@ setup_git()
 	git tag -f $DIII_REPO_TAG HEAD
 	git checkout $PYNQ_TAG && git checkout $DIII_REPO_TAG
 
+	$REPOSITORY_DIR/ip/finn-example-ip/scripts/fetch_finn_ips.sh $REPOSITORY_DIR/ip/finn-example-ip/ip
+
 	cd $REPOSITORY_DIR
 	touch .git_setup
 
