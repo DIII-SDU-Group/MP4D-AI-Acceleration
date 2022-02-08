@@ -40,9 +40,9 @@ cd /home/$UBUNTU_USER/Fast-RTPS-Gen/ && /opt/gradle/gradle-6.3/bin/gradle instal
 # Get PX4 ROS packages
 su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone https://github.com/PX4/px4_ros_com.git"
 su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone https://github.com/PX4/px4_msgs.git"
-su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone --recurse-submodules https://github.com/frnyb/InvertImage.git" 
 
 # Custom package
+su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone --recurse-submodules https://github.com/DIII-SDU-Group/finn-example-ROS2-pkg.git" 
 apt install -y ros-foxy-usb-cam
 
 # Sudo workaround
