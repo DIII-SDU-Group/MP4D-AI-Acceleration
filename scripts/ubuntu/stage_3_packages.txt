@@ -29,3 +29,6 @@ lsb-release
 default-jdk
 unzip
 zip
+
+libopencv-dev
+python3-opencv

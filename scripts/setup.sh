@@ -82,6 +82,8 @@ setup_git()
 	
 	cd $REPOSITORY_DIR/hdl
 	git checkout $AVNET_REPO_TAG
+	git tag -f $DIII_REPO_TAG HEAD
+	git checkout $DIII_REPO_TAG
 	git apply $PATCHES_DIR/hdl_repo.patch
 	git add -A && git commit -m "MPSoC4Drones"
 	git tag -f $DIII_REPO_TAG HEAD
@@ -89,6 +91,8 @@ setup_git()
 
 	cd $REPOSITORY_DIR/petalinux
 	git checkout $AVNET_REPO_TAG
+	git tag -f $DIII_REPO_TAG HEAD
+	git checkout $DIII_REPO_TAG
 	git apply $PATCHES_DIR/petalinux_repo.patch
 	git add -A && git commit -m "MPSoC4Drones"
 	git tag -f $DIII_REPO_TAG HEAD
@@ -96,6 +100,8 @@ setup_git()
 
 	cd $REPOSITORY_DIR/meta-avnet
 	git checkout $AVNET_REPO_TAG
+	git tag -f $DIII_REPO_TAG HEAD
+	git checkout $DIII_REPO_TAG
 	git apply --reject $PATCHES_DIR/meta_avnet_repo.patch 
 	git add -A && git commit -m "MPSoC4Drones"
 	git tag -f $DIII_REPO_TAG HEAD
@@ -103,12 +109,12 @@ setup_git()
 
 	cd $REPOSITORY_DIR/PYNQ
 	git checkout $PYNQ_TAG
+	git tag -f $DIII_REPO_TAG HEAD
+	git checkout $DIII_REPO_TAG
 	git apply --reject $PATCHES_DIR/PYNQ_repo.patch 
 	git add -A && git commit -m "MPSoC4Drones"
 	git tag -f $DIII_REPO_TAG HEAD
 	git checkout $PYNQ_TAG && git checkout $DIII_REPO_TAG
-
-	$REPOSITORY_DIR/ip/finn-example-ip/scripts/fetch_finn_ips.sh $REPOSITORY_DIR/ip/finn-example-ip/ip
 
 	cd $REPOSITORY_DIR
 	touch .git_setup

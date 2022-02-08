@@ -137,6 +137,10 @@ configure_petalinux ()
 	# Run Avnet scripts
 	$REPOSITORY_DIR/petalinux/scripts/make_${BOARD}_${PROJECT}.sh --petalinux-configure
 
+    # Import system-user.dtsi
+    rm -f $PETALINUX_PROJECT_DIR/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+    cp -f $REPOSITORY_DIR/src/system-user.dtsi $PETALINUX_PROJECT_DIR/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+
 	# Done
 	if [ $? -ne 0 ]
 	then
@@ -217,7 +221,7 @@ build_petalinux ()
 	echo Exporting modules...
 	echo
 
-	mkdir $MODULES_DIR
+	mkdir -p $MODULES_DIR
 
 	cp -f $PETALINUX_PROJECT_DIR/build/tmp/deploy/images/*/modules--*.tgz \
 		$MODULES_DIR
@@ -226,7 +230,7 @@ build_petalinux ()
 	echo Building and exporting kernel devsrc
 	echo
 
-	mkdir $KERNEL_DEVSRC_DIR
+	mkdir -p $KERNEL_DEVSRC_DIR
 
 	petalinux-build -c kernel-devsrc -p $PETALINUX_PROJECT_DIR
 	cp -f $PETALINUX_PROJECT_DIR/build/tmp/deploy/rpm/$BOARD/kernel-devsrc-1.0-r0.*.rpm \
@@ -242,8 +246,8 @@ build_petalinux ()
 	sudo rm -rf $TARGET_DIR/rootfs_petalinux
 	sudo rm -rf $TARGET_DIR/firmware
 
-	mkdir $TARGET_DIR/rootfs_petalinux
-	mkdir $TARGET_DIR/firmware
+	mkdir -p $TARGET_DIR/rootfs_petalinux
+	mkdir -p $TARGET_DIR/firmware
 
 	tar xf $PETALINUX_DIR/projects/$AVNET_PROJECT_NAME/images/linux/rootfs.tar.gz -C $TARGET_DIR/rootfs_petalinux
 	sudo cp -rp $TARGET_DIR/rootfs_petalinux/lib/firmware/mchp $TARGET_DIR/firmware
@@ -294,7 +298,7 @@ build_ubuntu ()
 		exit 1
 	fi
 
-	UPDATE_KERNEL=
+	UPDATE_KERNEL="-"
 
 	# Check if has already been built
 	if [ -e $REPOSITORY_DIR/.ubuntu_built ]
