@@ -44,6 +44,7 @@ su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone https://github.com/PX4/px4_
 # Custom package
 su - $UBUNTU_USER -c "cd ~/ros2_ws/src/ && git clone --recurse-submodules https://github.com/DIII-SDU-Group/finn-example-ROS2-pkg.git" 
 apt install -y ros-foxy-usb-cam
+apt install -y ros-foxy-vision-msgs
 
 # Sudo workaround
 chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
